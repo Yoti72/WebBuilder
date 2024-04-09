@@ -1,0 +1,50 @@
+@page "/button"
+@using WebBuilder.Components
+
+
+<PageTitle>ButtonBuilder</PageTitle>
+<h1>ButtonBuilder</h1>
+<p>This is where you can customize your content.</p>
+
+
+
+
+<div>
+    <CustomButton ButtonText="Click Me" ButtonColor="@ButtonColor" ButtonSize="@ButtonSize" ButtonColorChanged="HandleButtonColorChanged" ButtonSizeChanged="HandleButtonSizeChanged" />
+    <!-- ButtonFontWeight="ButtonFontWeight"        ButtonFontWeightChanged="HandleButtonFontWeightChanged"-->
+</div>
+
+<div>
+    <input type="color" @bind="ButtonColor" />
+    <input type="range" min="10" max="200" step="1" @bind="ButtonSize" />
+    <!-- <input type="range" min="100" max="900" step="100" @bind="ButtonFontWeight" /> -->
+</div>
+
+<TextSizeSlider @bind-TextSize="textSize" /> 
+
+@code {
+    private string ButtonSize = "small"; // Default size
+    private int textSize = 16; // Default text size
+    private string ButtonColor = "#007bff"; // Default button color
+    //private string ButtonFontWeight = "100"; // Default font weight
+
+    private async Task HandleButtonColorChanged(string color)
+    {
+        ButtonColor = color;
+        await Task.CompletedTask;
+    }
+    private async Task HandleButtonSizeChanged(string size)
+    {
+        ButtonSize = size;
+        await Task.CompletedTask;
+    }
+
+<!--    private async Task HandleButtonFontWeightChanged(string fontSize)
+    {
+        ButtonFontWeight = fontSize;
+        await Task.CompletedTask;
+    }-->
+
+}
+
+
