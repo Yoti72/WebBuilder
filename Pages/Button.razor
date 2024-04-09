@@ -1,47 +1,94 @@
 @page "/button"
 @using WebBuilder.Components
 
-
-<PageTitle>ButtonBuilder</PageTitle>
-<h1>ButtonBuilder</h1>
-<p>This is where you can customize your content.</p>
+<!-- Include scoped CSS file -->
+<link rel="stylesheet" href="Button.razor.css" />
 
 
+<!-- Structure of the Page -->
+<body>
+    <PageTitle>ButtonBuilder</PageTitle>
+    <h1>ButtonBuilder</h1>
+    <p>This is where you can customize your content.</p>
+
+    <div class="container">
+
+        <!-- Left box with input fields -->
+        <div class="left-box">
+            <div class="text-strip">Button Basics</div>
+
+            <input type="color" @bind="ButtonColor" />
+            <input type="range" min="10" max="200" step="1" @bind="ButtonWidth" />
+            <input type="range" min="10" max="200" step="1" @bind="ButtonHeight" />
+            <label for="font">Font:</label>
+                <select @bind="ButtonFont">
+                    <option value="Arial">Arial</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <!-- Add more font options as needed -->
+                </select>
+   <!--     <label for="font-weight">Font Weight:</label>
+                <select @bind="ButtonFontWeight">
+                    <option value="lighter">Lighter</option>
+                    <option value="normal">Normal</option>
+                    <option value="bold">Bold</option>
+                    <option value="bolder">Bolder</option>
+                </select> -->
+            
+        </div>
+
+        <!-- Right box with CustomButton component -->
+        <div class="right-box">
+            <div class="text-strip">Preview</div>
+            <CustomButton ButtonText="Click Me" ButtonColor="@ButtonColor" ButtonWidth="@ButtonWidth" ButtonHeight="@ButtonHeight" ButtonFont="@ButtonFont" 
+                ButtonColorChanged="HandleButtonColorChanged" ButtonWidthChanged="HandleButtonWidthChanged" ButtonHeightChanged="HandleButtonHeightChanged" ButtonFontChanged="HandleButtonFontChanged" ></CustomButton> 
+            <!-- ButtonFontWeight="ButtonFontWeight"        ButtonFontWeightChanged="HandleButtonFontWeightChanged"                          ButtonFontChanged="HandleButtonFontChanged"   ButtonFontChanged="(e) => HandleButtonFontChanged(e)"          ButtonFontWeightChanged="HandleButtonFontWeightChanged"                          -->
+        </div>
+    </div>
 
 
-<div>
-    <CustomButton ButtonText="Click Me" ButtonColor="@ButtonColor" ButtonSize="@ButtonSize" ButtonColorChanged="HandleButtonColorChanged" ButtonSizeChanged="HandleButtonSizeChanged" />
-    <!-- ButtonFontWeight="ButtonFontWeight"        ButtonFontWeightChanged="HandleButtonFontWeightChanged"-->
-</div>
 
-<div>
-    <input type="color" @bind="ButtonColor" />
-    <input type="range" min="10" max="200" step="1" @bind="ButtonSize" />
-    <!-- <input type="range" min="100" max="900" step="100" @bind="ButtonFontWeight" /> -->
-</div>
+ <!--   <TextSizeSlider @bind-TextSize="textSize" /> -->
+</body>
+<!-- End of the HTML Structure -->
 
-<TextSizeSlider @bind-TextSize="textSize" /> 
 
+
+<!-- Code Section -->
 @code {
-    private string ButtonSize = "small"; // Default size
+    private string ButtonWidth = "small"; // Default size
+    private string ButtonHeight = "small"; // Default size
     private int textSize = 16; // Default text size
     private string ButtonColor = "#007bff"; // Default button color
-    //private string ButtonFontWeight = "100"; // Default font weight
+    private string ButtonFont = "Arial"; // Default font
+   // private string ButtonFontWeight = "normal"; // Default font weight
 
     private async Task HandleButtonColorChanged(string color)
     {
         ButtonColor = color;
         await Task.CompletedTask;
     }
-    private async Task HandleButtonSizeChanged(string size)
+    private async Task HandleButtonWidthChanged(string width)
     {
-        ButtonSize = size;
+        ButtonWidth = width;
+        await Task.CompletedTask;
+    }
+    private async Task HandleButtonHeightChanged(string height)
+    {
+        ButtonHeight = height;
         await Task.CompletedTask;
     }
 
-<!--    private async Task HandleButtonFontWeightChanged(string fontSize)
+    private async Task HandleButtonFontChanged(string font)
     {
-        ButtonFontWeight = fontSize;
+        ButtonFont = font;
+        await Task.CompletedTask;
+    }
+
+<!--
+    private async Task HandleButtonFontWeightChanged(string fontWeight)
+    {
+        ButtonFontWeight = fontWeight;
         await Task.CompletedTask;
     }-->
 

@@ -1,16 +1,24 @@
 <!-- CustomButton.razor -->
-<button style="background-color: @ButtonColor;  width: @(ButtonSize)px; height: @(ButtonSize)px;" @onclick="HandleButtonClick" >Text</button>
-<!-- font-weight: ButtonFontWeight; -->
+<button style=" font-family: @ButtonFont; background-color: @ButtonColor;  width: @(ButtonWidth)px; height: @(ButtonHeight)px;" @onclick="HandleButtonClick" >Text</button>
+<!-- font-weight: @ButtonFontWeight; -->
 
 @code {
     [Parameter] public string? ButtonText { get; set; }
     [Parameter] public string? ButtonColor { get; set; }
-    [Parameter] public string? ButtonSize { get; set; }
+    [Parameter] public string? ButtonHeight { get; set; }
+    [Parameter] public string? ButtonWidth { get; set; }
+    [Parameter] public string? ButtonFont { get; set; }
     //[Parameter] public string? ButtonFontWeight { get; set; }
+    //[Parameter] public string? ButtonFontSize { get; set; }
+    //[Parameter] public string? ButtonTextColor { get; set; }
 
     [Parameter] public EventCallback<string> ButtonColorChanged { get; set; }
-    [Parameter] public EventCallback<string> ButtonSizeChanged { get; set; }
+    [Parameter] public EventCallback<string> ButtonWidthChanged { get; set; }
+    [Parameter] public EventCallback<string> ButtonHeightChanged { get; set; }
+    [Parameter] public EventCallback<string> ButtonFontChanged { get; set; }
     //[Parameter] public EventCallback<string> ButtonFontWeightChanged { get; set; }
+    //[Parameter] public EventCallback<string> ButtonFontSizeChanged { get; set; }
+    //[Parameter] public EventCallback<string> ButtonTextColorChanged { get; set; }
 
     private async Task HandleButtonClick()
     {
@@ -24,10 +32,18 @@
         await ButtonColorChanged.InvokeAsync(ButtonColor);
 
         // Update the ButtonSize property first
-        ButtonSize = "large"; 
+        ButtonWidth = "large"; 
+        ButtonHeight = "large"; 
 
         // Invoke the ButtonSizeChanged event to notify parent component
-        await ButtonSizeChanged.InvokeAsync(ButtonSize);
+        await ButtonWidthChanged.InvokeAsync(ButtonWidth);
+        await ButtonHeightChanged.InvokeAsync(ButtonHeight);
+
+        // Update the ButtonFont property first
+        ButtonFont = "Arial";
+
+        // Invoke the ButtonFontChanged event to notify parent component
+        await ButtonFontChanged.InvokeAsync(ButtonFont);
     }
 
 }
