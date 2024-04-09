@@ -1,6 +1,6 @@
 <!-- CustomButton.razor -->
-<button style=" font-family: @ButtonFont; background-color: @ButtonColor;  width: @(ButtonWidth)px; height: @(ButtonHeight)px;" @onclick="HandleButtonClick" >Text</button>
-<!-- font-weight: @ButtonFontWeight; -->
+<button style="border-radius: @(ButtonCornerRadius)px; color: @ButtonTextColor; font-size: @(ButtonFontSize)px; font-weight: @ButtonFontWeight; font-family: @ButtonFont; background-color: @ButtonColor;  width: @(ButtonWidth)px; height: @(ButtonHeight)px;" @onclick="HandleButtonClick" >Text</button>
+
 
 @code {
     [Parameter] public string? ButtonText { get; set; }
@@ -8,25 +8,27 @@
     [Parameter] public string? ButtonHeight { get; set; }
     [Parameter] public string? ButtonWidth { get; set; }
     [Parameter] public string? ButtonFont { get; set; }
-    //[Parameter] public string? ButtonFontWeight { get; set; }
-    //[Parameter] public string? ButtonFontSize { get; set; }
-    //[Parameter] public string? ButtonTextColor { get; set; }
+    [Parameter] public string? ButtonFontWeight { get; set; }
+    [Parameter] public string? ButtonFontSize { get; set; }
+    [Parameter] public string? ButtonTextColor { get; set; }
+    [Parameter] public string ButtonCornerRadius { get; set; } = "0"; // Default value
 
     [Parameter] public EventCallback<string> ButtonColorChanged { get; set; }
     [Parameter] public EventCallback<string> ButtonWidthChanged { get; set; }
     [Parameter] public EventCallback<string> ButtonHeightChanged { get; set; }
     [Parameter] public EventCallback<string> ButtonFontChanged { get; set; }
-    //[Parameter] public EventCallback<string> ButtonFontWeightChanged { get; set; }
-    //[Parameter] public EventCallback<string> ButtonFontSizeChanged { get; set; }
-    //[Parameter] public EventCallback<string> ButtonTextColorChanged { get; set; }
+    [Parameter] public EventCallback<string> ButtonFontWeightChanged { get; set; }
+    [Parameter] public EventCallback<string> ButtonFontSizeChanged { get; set; }
+    [Parameter] public EventCallback<string> ButtonTextColorChanged { get; set; }
+    [Parameter] public EventCallback<string> ButtonCornerRadiusChanged { get; set; }
 
     private async Task HandleButtonClick()
     {
         // Update the FontWeight property first
-        //ButtonFontWeight = "bold";
+        ButtonFontWeight = "bold";
 
         // Invoke the ButtonFontWeightChanged event to notify parent component
-        //await ButtonFontWeightChanged.InvokeAsync(ButtonFontWeight);
+        await ButtonFontWeightChanged.InvokeAsync(ButtonFontWeight);
 
         // Invoke the ButtonColorChanged event to notify parent component
         await ButtonColorChanged.InvokeAsync(ButtonColor);
@@ -44,6 +46,25 @@
 
         // Invoke the ButtonFontChanged event to notify parent component
         await ButtonFontChanged.InvokeAsync(ButtonFont);
+
+        // Update the ButtonFontSize property first
+        ButtonFontSize = "20";
+
+        // Invoke the ButtonFontSizeChanged event to notify parent component
+        await ButtonFontSizeChanged.InvokeAsync(ButtonFontSize);
+
+        // Update the ButtonTextColor property first
+        ButtonTextColor = "white";
+
+        // Invoke the ButtonTextColorChanged event to notify parent component
+        await ButtonTextColorChanged.InvokeAsync(ButtonTextColor);
+
+        // Update the ButtonCornerRadius property first
+        ButtonCornerRadius = "10";
+
+        // Invoke the ButtonCornerRadiusChanged event to notify parent component
+        await ButtonCornerRadiusChanged.InvokeAsync(ButtonCornerRadius);
+
     }
 
 }
