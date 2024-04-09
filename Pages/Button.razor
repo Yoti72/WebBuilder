@@ -8,7 +8,7 @@
 <!-- Structure of the Page -->
 <body>
     <PageTitle>ButtonBuilder</PageTitle>
-    <h1>ButtonBuilder</h1>
+    <h1>Button Builder!</h1>
     <p>This is where you can customize your content.</p>
 
     <div class="container">
@@ -17,41 +17,64 @@
         <div class="left-box">
             <div class="text-strip">Button Basics</div>
 
-            <input type="color" @bind="ButtonColor" />
-            <input type="range" min="10" max="200" step="1" @bind="ButtonWidth" />
-            <input type="range" min="10" max="200" step="1" @bind="ButtonHeight" />
-            <label for="font">Font:</label>
-                <select @bind="ButtonFont">
-                    <option value="Arial">Arial</option>
-                    <option value="Helvetica">Helvetica</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <!-- Add more font options as needed -->
+            <div class="input-field">
+                <label for="button-color">Button Color:</label>
+                <input type="color" @bind="ButtonColor" />
+            </div>
+
+            <div class="input-field">
+                <label for="button-width">Button Width:</label>
+                <input type="range" min="10" max="200" step="1" @bind="ButtonWidth" />
+            </div>
+
+            <div class="input-field">
+                <label for="button-height">Button Height:</label>
+                <input type="range" min="10" max="200" step="1" @bind="ButtonHeight" />
+            </div>
+
+            <div class="input-field">
+                <label for="font">Font:</label>
+                    <select @bind="ButtonFont">
+                        <option value="Arial">Arial</option>
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <!-- Add more font options as needed -->
                 </select>
-            <label for="font-weight">Font Weight:</label>
-                <select @bind="ButtonFontWeight">
-                    <option value="lighter">Lighter</option>
-                    <option value="normal">Normal</option>
-                    <option value="bold">Bold</option>
-                    <option value="bolder">Bolder</option>
-                </select> 
+            </div>
 
-            <label for="font-size">Font Size:</label>
-                <input type="range" min="10" max="70" step="1" @bind="ButtonFontSize" />
+            <div class="input-field">
+                <label for="font-weight">Font Weight:</label>
+                    <select @bind="ButtonFontWeight">
+                        <option value="lighter">Lighter</option>
+                        <option value="normal">Normal</option>
+                        <option value="bold">Bold</option>
+                        <option value="bolder">Bolder</option>
+                    </select> 
+            </div>
 
-            <label for="text-color">Text Color:</label>
-                <input type="color" @bind="ButtonTextColor" />
-            
-            <label for="corner-radius">Corner Radius:</label>
-                <input type="range" min="0" max="50" step="1" @bind="ButtonCornerRadius" />
-       
+            <div class="input-field">
+                <label for="font-size">Font Size:</label>
+                    <input type="range" min="10" max="70" step="1" @bind="ButtonFontSize" />
+            </div>
+
+            <div class="input-field">
+                <label for="text-color">Text Color:</label>
+                    <input type="color" @bind="ButtonTextColor" />
+            </div>
+
+            <div class="input-field">
+                <label for="corner-radius">Corner Radius:</label>
+                    <input type="range" min="0" max="50" step="1" @bind="ButtonCornerRadius" />
+            </div>
         </div>
 
         <!-- Right box with CustomButton component -->
         <div class="right-box">
             <div class="text-strip">Preview</div>
-            <CustomButton ButtonText="Click Me" ButtonColor="@ButtonColor" ButtonWidth="@ButtonWidth" ButtonHeight="@ButtonHeight" ButtonFont="@ButtonFont" ButtonFontWeight="@ButtonFontWeight" ButtonFontSize="@ButtonFontSize" ButtonTextColor="@ButtonTextColor" ButtonCornerRadius="@ButtonCornerRadius"
-                ButtonColorChanged="HandleButtonColorChanged" ButtonWidthChanged="HandleButtonWidthChanged" ButtonHeightChanged="HandleButtonHeightChanged" ButtonFontChanged="HandleButtonFontChanged" ButtonFontWeightChanged="HandleButtonFontWeightChanged" ButtonFontSizeChanged="HandleButtonFontSizeChanged" ButtonTextColorChanged="HandleButtonTextColorChanged" ButtonCornerRadiusChanged="HandleButtonCornerRadiusChanged" ></CustomButton> 
-
+            <div class="button-preview">
+                <CustomButton ButtonText="Click Me" ButtonColor="@ButtonColor" ButtonWidth="@ButtonWidth" ButtonHeight="@ButtonHeight" ButtonFont="@ButtonFont" ButtonFontWeight="@ButtonFontWeight" ButtonFontSize="@ButtonFontSize" ButtonTextColor="@ButtonTextColor" ButtonCornerRadius="@ButtonCornerRadius"
+                    ButtonColorChanged="HandleButtonColorChanged" ButtonWidthChanged="HandleButtonWidthChanged" ButtonHeightChanged="HandleButtonHeightChanged" ButtonFontChanged="HandleButtonFontChanged" ButtonFontWeightChanged="HandleButtonFontWeightChanged" ButtonFontSizeChanged="HandleButtonFontSizeChanged" ButtonTextColorChanged="HandleButtonTextColorChanged" ButtonCornerRadiusChanged="HandleButtonCornerRadiusChanged" ></CustomButton> 
+            </div
         </div>
     </div>
 
