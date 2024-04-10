@@ -1,0 +1,17 @@
+
+
+.centered-and-bigger {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Adjust the 300px to change the minimum box size */
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+}
+
+.centered-and-bigger .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+

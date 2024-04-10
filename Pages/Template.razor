@@ -3,29 +3,32 @@
 @inject TemplateService TemplateService
 
 <!-- Include scoped CSS file -->
-<link rel="stylesheet" href="Template.razor.css" />
+<link href="Template.razor.css" rel="stylesheet">
 
 
 <!-- Structure of the Page -->
-<div class="row">
-    <div class="col-sm-6 col-md-3">
-        <div class="card">
-            <img src="template1.png" class="card-img-top" alt="Template 1">
-            <div class="card-body">
-                <button class="btn btn-primary" @onclick='() => SelectTemplate("template1")'>Select</button>
+<body>
+    <div class="row centered-and-bigger">
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <img src="template1.png" class="card-img-top" alt="Template 1">
+                <div class="card-body">
+                    <button class="btn btn-primary" @onclick='() => SelectTemplate("template1")'>Select</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-        <div class="card">
-            <img src="template2.png" class="card-img-top" alt="Template 2">
-            <div class="card-body">
-                <button class="btn btn-primary" @onclick='() => SelectTemplate("template2")'>Select</button>
+        <div class="col-sm-6 col-md-3">
+            <div class="card">
+                <img src="template2.png" class="card-img-top" alt="Template 2">
+                <div class="card-body">
+                    <button class="btn btn-primary" @onclick='() => SelectTemplate("template2")'>Select</button>
+                </div>
             </div>
         </div>
+        <!-- Add more cards as needed -->
     </div>
-    <!-- Add more cards as needed -->
-</div>
+</body
+
 
 <!-- End of the HTML Structure -->
 
