@@ -1,18 +1,39 @@
 @page "/template"
+@using WebBuilder.Data
+@inject TemplateService TemplateService
 
 <!-- Include scoped CSS file -->
 <link rel="stylesheet" href="Template.razor.css" />
 
 
 <!-- Structure of the Page -->
-<body>
-    <h1>Test Hello World</h1>
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="card">
+            <img src="template1.png" class="card-img-top" alt="Template 1">
+            <div class="card-body">
+                <button class="btn btn-primary" @onclick='() => SelectTemplate("template1")'>Select</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="card">
+            <img src="template2.png" class="card-img-top" alt="Template 2">
+            <div class="card-body">
+                <button class="btn btn-primary" @onclick='() => SelectTemplate("template2")'>Select</button>
+            </div>
+        </div>
+    </div>
+    <!-- Add more cards as needed -->
+</div>
 
-</body>
 <!-- End of the HTML Structure -->
 
 
 <!-- Code Section -->
 @code {
-    // Code Section
+    private void SelectTemplate(string templateName)
+    {
+        TemplateService.CurrentTemplate.TemplateName = templateName;
+    }
 }
