@@ -1,0 +1,27 @@
+    /* Style for the left and right boxes */
+    .row {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+
+    h2 {
+        background-color: #D9D9D9;
+        padding: 10px;
+        text-align: center;
+        width: 102%;
+        font-family: Karla, sans-serif;
+        font-size: 24px;
+        border-radius: 20%;
+        margin-right: 30px;
+    }
+
+    .col-md-6 {
+        /*width: 48%;  Adjust as needed */
+        width: calc(48% - 20px);
+        height: 350px;
+        background-color: #CDCDCD;
+        border-radius: 10%;
+    }
