@@ -1,5 +1,8 @@
 @page "/button"
 @using WebBuilder.Components
+<!--
+using System.Text.Json
+inject Blazored.LocalStorage.ILocalStorageService LocalStorage-->
 
 <!-- Include scoped CSS file -->
 <link rel="stylesheet" href="Button.razor.css" />
@@ -76,11 +79,13 @@
                     ButtonColorChanged="HandleButtonColorChanged" ButtonWidthChanged="HandleButtonWidthChanged" ButtonHeightChanged="HandleButtonHeightChanged" ButtonFontChanged="HandleButtonFontChanged" ButtonFontWeightChanged="HandleButtonFontWeightChanged" ButtonFontSizeChanged="HandleButtonFontSizeChanged" ButtonTextColorChanged="HandleButtonTextColorChanged" ButtonCornerRadiusChanged="HandleButtonCornerRadiusChanged" ></CustomButton> 
             </div
         </div>
+
+       <!-- <button onclick="SaveButtonSettings">Save</button>-->
     </div>
 
 
 
- <!--   <TextSizeSlider @bind-TextSize="textSize" /> -->
+ 
 </body>
 <!-- End of the HTML Structure -->
 
@@ -143,6 +148,32 @@
         ButtonCornerRadius = corRadius;
         await Task.CompletedTask;
     }
+
+    //private async Task SaveButtonSettings()
+    //{
+        // Save the button event
+        // Button settings object
+        <!--
+        var buttonSettings = new
+        {
+            Color = ButtonColor,
+            Width = ButtonWidth,
+            Height = ButtonHeight,
+            Font = ButtonFont,
+            FontWeight = ButtonFontWeight,
+            FontSize = ButtonFontSize,
+            TextColor = ButtonTextColor,
+            SizeOfText = textSize,
+            CornerRadius = ButtonCornerRadius    
+        };
+
+        // Serialize button settings object to JSON
+        var jsonString = JsonSerializer.Serialize(buttonSettings);
+
+        // Store serialized JSON in local storage
+        // For example:
+        await LocalStorage.SetItemAsync("ButtonSettings", jsonString);-->
+    //}
      
 
 }
