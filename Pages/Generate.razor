@@ -1,6 +1,7 @@
 @page "/generate"
 @using WebBuilder.Data
 @inject TemplateService TemplateService
+@inject WebBuilder.Data.ButtonService ButtonService
 
 <!-- Include scoped CSS file -->
 <link rel="stylesheet" href="Generate.razor.css" />
@@ -21,6 +22,7 @@
             @if (TemplateService.CurrentTemplate.TemplateName == "template1")
             {
                 <h1>Template 1</h1>
+                <CustomButton ButtonText="@ButtonService.ButtonText" ButtonColor="@ButtonService.ButtonColor" ButtonWidth="@ButtonService.ButtonWidth" ButtonHeight="@ButtonService.ButtonHeight" ButtonFont="@ButtonService.ButtonFont" ButtonFontWeight="@ButtonService.ButtonFontWeight" ButtonFontSize="@ButtonService.ButtonFontSize" ButtonTextColor="@ButtonService.ButtonTextColor" ButtonCornerRadius="@ButtonService.ButtonCornerRadius"></CustomButton>
                 @foreach (var input in inputs)
                 {
                     <p>@input</p>

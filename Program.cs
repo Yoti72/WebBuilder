@@ -10,5 +10,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddScoped<TemplateService>(); //added for template service
+builder.Services.AddScoped<ButtonService>(); //added for button service
 
 await builder.Build().RunAsync();
