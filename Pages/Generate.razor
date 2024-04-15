@@ -19,15 +19,72 @@
         </div>
         <div class="col-md-6">
             <h2>Preview</h2>
+<!-------------------------- Template 1 -------------------------------------------------------------------------------------------------->
             @if (TemplateService.CurrentTemplate.TemplateName == "template1")
             {
-                <h1>Template 1</h1>
-                <CustomButton ButtonText="@ButtonService.ButtonText" ButtonColor="@ButtonService.ButtonColor" ButtonWidth="@ButtonService.ButtonWidth" ButtonHeight="@ButtonService.ButtonHeight" ButtonFont="@ButtonService.ButtonFont" ButtonFontWeight="@ButtonService.ButtonFontWeight" ButtonFontSize="@ButtonService.ButtonFontSize" ButtonTextColor="@ButtonService.ButtonTextColor" ButtonCornerRadius="@ButtonService.ButtonCornerRadius"></CustomButton>
-                @foreach (var input in inputs)
-                {
-                    <p>@input</p>
-                }
+                <html lang="en">
+                
+                <head>
+                </head>
+
+                <body>
+                    <h1>Template 1</h1>
+                    <div class="container">
+                        <!-- --------------Banner Section--------------------------------- -->
+                        <div class="banner row">
+                        </div>
+                        <!-- ------------End of Banner Section---------------------------- -->
+                        <!-- --------------(Buttons) Navigation Section------------------- -->
+                        <div class="contentarea row">
+                            <div class="Actionbuttons col-lg-5 col-md-7 col-12">
+                                @for (int i = 0; i < int.Parse(ButtonService.NumberOfButtons); i++)
+                                {
+                                    <CustomButton ButtonText="@ButtonService.ButtonText" ButtonColor="@ButtonService.ButtonColor" ButtonWidth="@ButtonService.ButtonWidth" ButtonHeight="@ButtonService.ButtonHeight" ButtonFont="@ButtonService.ButtonFont" ButtonFontWeight="@ButtonService.ButtonFontWeight" ButtonFontSize="@ButtonService.ButtonFontSize" ButtonTextColor="@ButtonService.ButtonTextColor" ButtonCornerRadius="@ButtonService.ButtonCornerRadius"></CustomButton>
+                                }
+                            </div>
+                        </div>
+                        <!-- ------------End of Navigation Section------------------------ -->
+                        <!-- ---------------Message Section------------------------------  -->
+                        <div class="message row">
+                            <!-- Welcome Paragraph Message -->
+                            <div class="messagecontent col-lg-9 col-12">
+                                @foreach (var input in inputs)
+                                {
+                                    <p>@input</p>
+                                }
+                            </div>
+
+                            <div class="translator col-lg-3 col-12">
+                                <div id="google_translate_element"></div>
+                            </div>
+                        </div>
+                        <!-- -----------End of Message Section---------------------------- -->
+                        <!-- ------------Footer Section----------------------------------- -->
+                        <div class="footer row">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="footersection">Office Address</div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="footersection">Office Hours</div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="footersection">Mailing Address</div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="footersection">Contact Info</div>
+                            </div>
+
+                        </div>
+                        <!-- --------------End of Footer Section-------------------------- -->
+                    </div>
+                </body>
+                </html>
+
             }
+<!-------------------------- Template 2 -------------------------------------------------------------------------------------------------->
             else if (TemplateService.CurrentTemplate.TemplateName == "template2")
             {
                 <h1>Template 2</h1>

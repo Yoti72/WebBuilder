@@ -1,15 +1,17 @@
-        /* Style for the Body */  
+        /* Style for the Body */
+
 
         body {
             background-color: #E2DFDF;
-        }
+        }  
 
         h1, p {
             align-items: center;
         }
         
         
-        /* Style for the left and right boxes */
+        /* Style for the lef
+        t and right boxes */
         .container {
             display: flex;
             justify-content: space-around;
@@ -39,7 +41,18 @@
             justify-content: center;
             align-items: center;
             height: 75%;
+            /* position: relative;*/
         }
+        /*
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }*/
+
+
 
         /* Style for the Left Box */
         .left-box {

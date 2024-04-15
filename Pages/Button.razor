@@ -1,9 +1,7 @@
 @page "/button"
 @using WebBuilder.Components
 @inject WebBuilder.Data.ButtonService ButtonService
-<!--
-using System.Text.Json
-inject Blazored.LocalStorage.ILocalStorageService LocalStorage-->
+
 
 <!-- Include scoped CSS file -->
 <link rel="stylesheet" href="Button.razor.css" />
@@ -57,6 +55,18 @@ inject Blazored.LocalStorage.ILocalStorageService LocalStorage-->
             </div>
 
             <div class="input-field">
+                <label for="num-buttons">Number of Buttons:</label>
+                    <select @bind="NumberOfButtons">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select> 
+            </div>
+
+            <div class="input-field">
                 <label for="font-size">Font Size:</label>
                     <input type="range" min="10" max="70" step="1" @bind="ButtonFontSize" />
             </div>
@@ -76,18 +86,13 @@ inject Blazored.LocalStorage.ILocalStorageService LocalStorage-->
         <div class="right-box">
             <div class="text-strip">Preview</div>
             <div class="button-preview">
-                <CustomButton  ButtonText="Click Me" ButtonColor="@ButtonColor" ButtonWidth="@ButtonWidth" ButtonHeight="@ButtonHeight" ButtonFont="@ButtonFont" ButtonFontWeight="@ButtonFontWeight" ButtonFontSize="@ButtonFontSize" ButtonTextColor="@ButtonTextColor" ButtonCornerRadius="@ButtonCornerRadius"
+                <CustomButton ButtonText="Click Me" ButtonColor="@ButtonColor" ButtonWidth="@ButtonWidth" ButtonHeight="@ButtonHeight" ButtonFont="@ButtonFont" ButtonFontWeight="@ButtonFontWeight" ButtonFontSize="@ButtonFontSize" ButtonTextColor="@ButtonTextColor" ButtonCornerRadius="@ButtonCornerRadius"
                     ButtonColorChanged="HandleButtonColorChanged" ButtonWidthChanged="HandleButtonWidthChanged" ButtonHeightChanged="HandleButtonHeightChanged" ButtonFontChanged="HandleButtonFontChanged" ButtonFontWeightChanged="HandleButtonFontWeightChanged" ButtonFontSizeChanged="HandleButtonFontSizeChanged" ButtonTextColorChanged="HandleButtonTextColorChanged" ButtonCornerRadiusChanged="HandleButtonCornerRadiusChanged" ></CustomButton> 
-            </div>
-            
+                <!--<div class="overlay"></div>-->
+            </div>         
         </div>
-
-       <!-- <button onclick="SaveButtonSettings">Save</button>-->
     </div>
-    <button @onclick="SaveButtonSettings" class="btn btn-primary">Done</button>
-
-
- 
+    <button @onclick="SaveButtonSettings" class="btn btn-primary" style="margin-left: 250px;">Done</button>
 </body>
 <!-- End of the HTML Structure -->
 
@@ -104,6 +109,7 @@ inject Blazored.LocalStorage.ILocalStorageService LocalStorage-->
     private string ButtonFontSize = "20px"; // Default font size
     private string ButtonTextColor = "#FFFFFF"; // Default text color
     private string ButtonCornerRadius = "10px"; // Default corner radius
+    private string NumberOfButtons = "1"; // Default number of buttons
 
     private async Task HandleButtonColorChanged(string color)
     {
@@ -154,34 +160,8 @@ inject Blazored.LocalStorage.ILocalStorageService LocalStorage-->
     private string ButtonText = "Text";
     void SaveButtonSettings()
     {
-        ButtonService.SetButtonProperties(ButtonText, ButtonColor, ButtonWidth, ButtonHeight, ButtonFont, ButtonFontWeight, ButtonFontSize, ButtonTextColor, ButtonCornerRadius);
+        ButtonService.SetButtonProperties(ButtonText, ButtonColor, ButtonWidth, ButtonHeight, ButtonFont, ButtonFontWeight, ButtonFontSize, ButtonTextColor, ButtonCornerRadius, NumberOfButtons);
     }
-
-    //private async Task SaveButtonSettings()
-    //{
-        // Save the button event
-        // Button settings object
-        <!--
-        var buttonSettings = new
-        {
-            Color = ButtonColor,
-            Width = ButtonWidth,
-            Height = ButtonHeight,
-            Font = ButtonFont,
-            FontWeight = ButtonFontWeight,
-            FontSize = ButtonFontSize,
-            TextColor = ButtonTextColor,
-            SizeOfText = textSize,
-            CornerRadius = ButtonCornerRadius    
-        };
-
-        // Serialize button settings object to JSON
-        var jsonString = JsonSerializer.Serialize(buttonSettings);
-
-        // Store serialized JSON in local storage
-        // For example:
-        await LocalStorage.SetItemAsync("ButtonSettings", jsonString);-->
-    //}
      
 
 }
